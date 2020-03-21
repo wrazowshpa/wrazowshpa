@@ -1,0 +1,29 @@
+{% extends "mrkplc_forms_app/mrkplc_forms_app_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+
+    <h1>Welcome to the List of Ads Page!</h1>
+
+  <!-- this is the page where the search results are loaded -->
+
+  <form id="searchform" action="{% url 'mrkplc_forms_app:search_results' %}" method="get" accept-charset="utf-8">
+      <button class="searchbutton" type="submit">
+        <i class="fa fa-search"></i>Search
+      </button>
+      <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
+    </form>
+       <!-- templates/search_results.html -->
+<h1>Search Results</h1>
+
+<ul>
+  {% for ad in ads %}
+      <h2><a href="{{ad.id}}/">{{ad.ad_title}} </a></h2>
+    <li>
+      {{ ad.ad_title }}, {{ ad.description }}
+    </li>
+  {% endfor %}
+</ul>
+  </div>
+
+
+{% endblock %}

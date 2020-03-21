@@ -1,0 +1,25 @@
+{% extends "mrkplc_forms_app/mrkplc_forms_app_base.html" %}
+{% block body_block %}
+ {{ user.username }}
+        {{ user.email }}
+
+    <!-- this loads all the authenticated users ads. for them to view it -->
+
+    {% for PostAd in user_posts %}
+            <div class="post">
+
+                <div class="date">
+                    <p>{{ PostAd.published_date }}</p>
+                    <p>{{ PostAd.author }}</p>
+                </div>
+
+                <h1>
+                    <h2><a href="{{PostAd.id}}/">{{PostAd.ad_title}} </a></h2>
+               <li>
+                    {{ PostAd.description }}
+               </li>
+
+            </div>
+    {% endfor %}
+
+{% endblock %}

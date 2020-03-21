@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+  {% block body_block %}
+
+
+      <form class="wrapper" id="searchform" action="{% url 'mrkplc_forms_app:search_results' %}" method="get" accept-charset="utf-8">
+      <input class="input" id="searchbox" name="q" type="text" placeholder="What are you looking for?">
+      <button class="searchbtn" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+
+  {% endblock %}

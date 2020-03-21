@@ -1,0 +1,22 @@
+{% extends "mrkplc_forms_app/mrkplc_forms_app_base.html" %}
+
+{% block body_block %}
+
+    <!--- this is the post ad form. This is the form that is loaded when a
+    user clicks on postad. It is referring to the PostAd ModelForm. -->
+<h1>
+  {% if not form.instance.pk %}
+  Create PostAd
+  {% else %}
+  Update PostAd
+  {% endif %}
+</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class='btn btn-primary' value="Submit">
+
+  </form>
+
+
+{% endblock %}

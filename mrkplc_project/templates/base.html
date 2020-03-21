@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      CBVs
+      {# Title Extensions go inside the block#}
+    {# Custom CSS#}
+
+      {% block title_block %}
+
+      {% endblock %}
+    </title>
+      <!--
+      for the search bar button icon (magnifying glass icon)
+      -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+      <!--
+      the nav links on the homepage
+      -->
+      <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+      <!--
+      homepage search bar etc
+      -->
+      <link rel="stylesheet" href="{% static 'css/homepage/homepage.css' %}">
+
+</head>
+  <body>
+<header>
+<div class="container">
+<h1 class="logo"></h1>
+    <nav class="navbar navbar-default navbar-static-top">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'mrkplc_forms_app:list' %}">Browse Ads</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+
+            <li><a class="navbar-link" href="{% url 'index' %}">Home</a></li>
+        {# Some logic on what to display for last item#}
+        {% if user.is_authenticated %}
+            <li><a class="nav-link" href="{% url 'mrkplc_forms_app:user_ads' %}">My Ads</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a class="nav-link" href="{% url 'mrkplc_users_app:user_login' %}">Login</a></li>
+            <li><a class="navbar-link" href="{% url 'mrkplc_users_app:register' %}">Register</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+</div>
+</header>
+
+
+    <div>
+      {% block body_block %}
+
+      {% endblock %}
+    </div>
+
+  </body>
+
+</html>

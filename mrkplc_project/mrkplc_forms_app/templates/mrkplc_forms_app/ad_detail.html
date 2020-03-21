@@ -1,0 +1,23 @@
+<!-- This is the ad detail page. When a user clicks on an ad from the ad list
+the user is loaded on this page --->
+
+{% extends "mrkplc_forms_app/mrkplc_forms_app_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+    <h1>Welcome to the Ad Detail Page</h1>
+    <h2>Ad Details:</h2>
+    <p>Id_num: {{ad_details.id}}</p>
+    <p>Name: {{ad_details.ad_title}}</p>
+    <p>Principal: {{ad_details.description}}</p>
+    <p>Location: {{ad_details.location}}</p>
+    <p>Price: {{ad_details.price}}</p>
+    <p>Price Options: {{ad_details.priceOptions}}</p>
+    <p>Image: {{ad_details.images}}</p>
+
+  </div>
+  <div class="container">
+    <p><a class='btn btn-warning' href="{% url 'mrkplc_forms_app:update' pk=ad_details.pk %}">Update</a></p>
+
+  </div>
+
+{% endblock %}
